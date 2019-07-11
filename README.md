@@ -6,7 +6,14 @@ The purpose of this is to help one perform simple computations such as evaluatin
 ### Example:
 I can create a program that uses bisection method to find the root of the function `f(x) = 4*cos(x) - 10`. Instead of embedding the function in the code, the user can simply type the string, "4*cos(x) - 10" as input and get the desired output.
 
+### How to use
+1. Import the Evaluator implementation into your project.
+2. Call `Evaluator.eval("f(x)", x)` to evaluate f(x). It returns a double.
 
+Examples:
+For f(x) = 4*cos(2x)*sin(x).
 
-### This implementation is in working progress. 
+To find f(2): `var value = Evaluator.eval("4*cos(2x)*sin(x)", 2);`
+
+### This project is in working progress
 Currently, it can only evaluate linear functions and simple trig functions containing cos, sin and tan.
