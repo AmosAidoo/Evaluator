@@ -14,6 +14,7 @@ Examples:
 For f(x) = 4*cos(2x)*sin(x).
 
 To find f(2): `var value = Evaluator.eval("4*cos(2x)*sin(x)", 2);`
+The Main.java has some driving code you can use to test the implementation
 
 ### This project is in working progress
 Currently, it can only evaluate linear functions and simple trig functions containing cos, sin and tan.
