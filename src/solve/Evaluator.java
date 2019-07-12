@@ -82,7 +82,16 @@ public final class Evaluator {
                 } 
                 filteredValue = trigAnswer;
             } else if (containsPower(expr)){
-                
+                String numStr = expr.split("\\s*\\^\\s*")[0], powStr = expr.split("\\s*\\^\\s*")[1];
+                double number, power;
+                if (isExponential(expr)){
+                    power = filter(powStr, x);
+                    filteredValue = Math.exp(power);
+                } else {
+                    number = filter(numStr, x);
+                    power = filter(powStr, x);
+                    filteredValue = Math.pow(number, power);
+                }
             } else {
                 double coefficient = expr.replace("x", "").equals("") ? 1 : Double.parseDouble(expr.replace("x", ""));
                 filteredValue = coefficient * x;
@@ -92,7 +101,6 @@ public final class Evaluator {
                 filteredValue = Double.parseDouble(expr);
             }
         }
-        
         return filteredValue;
     }
     
@@ -102,5 +110,9 @@ public final class Evaluator {
     
     private static boolean containsPower(String expr){
         return expr.contains("^");
+    }
+    
+    private static boolean isExponential(String expr){
+        return expr.contains("e");
     }
 }
