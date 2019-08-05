@@ -93,7 +93,23 @@ public final class Evaluator {
                     power = filter(powStr, x);
                     filteredValue = Math.pow(number, power);
                 }
-            } else {
+            } else if(containsLog(expr)) {
+                double logAnswer = 0, valueBetweenBracket;
+                //Extract the expression between the brackets
+                String betweenBrackets = expr.substring(expr.indexOf("(") + 1, expr.indexOf(")"));
+                
+                //Evaluate the expression between the brackets
+                valueBetweenBracket = filter(betweenBrackets, x);
+                
+                if (expr.contains("log")) {
+                    int base = Integer.parseInt((expr = expr.replace("log", "")).substring(0, expr.indexOf("(")));
+                    logAnswer = logk(base, valueBetweenBracket);
+                } else if (expr.contains("ln")) {
+                    logAnswer = Math.log(valueBetweenBracket);
+                }
+                return logAnswer;
+            }
+            else {
                 double coefficient = expr.replace("x", "").equals("") ? 1 : Double.parseDouble(expr.replace("x", ""));
                 filteredValue = coefficient * x;
             }
@@ -115,5 +131,13 @@ public final class Evaluator {
     
     private static boolean isExponential(String expr){
         return expr.contains("e");
+    }
+    
+    private static boolean containsLog(String expr){
+        return expr.contains("log") || expr.contains("ln");
+    }
+    
+    private static double logk(int oldBase, double n) {
+        return Math.log10(n) / Math.log10(oldBase);
     }
 }
