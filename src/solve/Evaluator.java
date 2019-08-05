@@ -41,11 +41,11 @@ public final class Evaluator {
                     waiting.add(currentValue * -1);
                     break;
                 case '*':
-                    if (waiting.isEmpty()) answer*=currentValue;
+                    if (waiting.isEmpty()) answer*=currentValue; //For the sake of operator precedence
                     else waiting.set(waiting.size() - 1, waiting.get(waiting.size() - 1) * currentValue);
                     break;
                 case '/':
-                    if (waiting.isEmpty()) answer/=currentValue;
+                    if (waiting.isEmpty()) answer/=currentValue; //For the sake of operator precedence
                     else waiting.set(waiting.size() - 1, waiting.get(waiting.size() - 1) * currentValue);
                     break;
                 default:
