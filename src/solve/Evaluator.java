@@ -10,9 +10,9 @@ import java.util.List;
 public final class Evaluator { 
     /**
      * 
-     * @param func
-     * @param x
-     * @return answer
+     * @param String func
+     * @param double x
+     * @return double answer
      */
     static double eval(String func, double x){
         //Split the function into individual components
@@ -59,8 +59,9 @@ public final class Evaluator {
     
     /**
      * 
-     * @param expr
-     * @return filteredValue
+     * @param String expr, The expression 
+     * @param double x
+     * @return double filteredValue
      */
     private static double filter(String expr, double x){
         double filteredValue = 0; //Identifier to contain the filtered value
